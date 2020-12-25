@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}  {{ block.super }} | {{ user|title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+      <a href="{% static 'personalPortfolio/imgs/nagah.jpg' %}" target="_blank"><img src="{% static 'personalPortfolio/imgs/nagah.jpg' %}" class="img-fluid"></a>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h3 id="hometext" class="font-weight-bold">Nagah is a Software Engineer, with 4 years of experience, I love Software, and I love good teams, I
+have experience in web development & RPA Development & Data analysis. 😊</h3>
+  </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if project.project_url %}
+    <a href="{{ project.project_url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+      <a href="{{ project.image.url }}" target="_blank"><img src="{{ project.image.url }}" class="img-fluid mb-2" height="500" width="500"></a>
+    {% endif %}
+    <h3><a href="{% url 'portfolio:project_details' project.slug %}">{{ project.title|capfirst  }}</a></h3>
+    <p>{{ project.desc }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

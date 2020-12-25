@@ -1,0 +1,28 @@
+# 1- django template inherit block
+{% block title %}  {{ block.super }} | {{ user }}{% endblock %}
+
+
+########################################
+
+
+2- create & update datatime
+You can use the (auto_now) and (auto_now_add) options for updated_at and created_at respectively.
+
+############################################
+
+
+3- slug filed
+
+at models ==>       slug = models.SlugField(max_length=200, default='', editable=False, unique=True)
+override save ==>   self.slug = slugify(self.title)
+
+
+#########################################################
+
+4- truncate chars and words
+
+<p>{{  post.desc|truncatewords:5 }}</p>
+<p>{{  post.desc|truncatechars:5 }}</p>
+
+
+###########################################################

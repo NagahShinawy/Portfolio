@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block title %} {{ project.title|title }}{% endblock %}
+
+{% block content %}
+
+    <div>
+        {% if project.project_url %}
+                <a href="{{ project.project_url }}"> {{ project.title }} </a><br>
+        {% endif %}
+        <h1>{{ project.title|capfirst }}</h1><span>{{ project.created|date:'Y-m-d H:i' }}</span><br>
+        <a href="{{project.image.url}}"><img src="{{project.image.url}}" alt="" height="300" width="400"></a><br>
+
+    </div>
+
+{% endblock %}
