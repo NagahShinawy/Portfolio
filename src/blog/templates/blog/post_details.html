@@ -6,9 +6,9 @@
 
 {% block content %}
 
-    <div>
-        <h2>{{ post.title|title }}</h2><span>{{ post.created|date:'Y-m-d H:i' }}</span>
-        <p>{{  post.desc }}</p>
+    <div class="container text-center mt-5">
+        <h2 class="text-center mt-5">{{ post.title|title }}</h2><span>{{ post.created|date:'Y-m-d H:i' }}</span>
+        <p class="text-center text-muted mb-5">{{  post.desc }}</p>
 
     </div>
 

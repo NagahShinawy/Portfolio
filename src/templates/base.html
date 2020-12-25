@@ -7,6 +7,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="{% static 'personalPortfolio/imgs/Logo.png' %}" type="image/png" sizes="16x16">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -39,6 +40,9 @@
           </li>
           {% endif %}
           <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %} active {% endif %}" href="{% url 'portfolio:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% static 'personalPortfolio/resume/nagah.pdf' %}" target="_blank">Resume</a>
           </li>
           <li class="nav-item">
@@ -48,7 +52,11 @@
             <a class="nav-link" href="https://github.com/NagahShinawy" target="_blank">Github</a>
           </li>
           <li>
-            <a role="button" href="{% url 'blog:blog_home' %}" class="btn btn-primary">Blog</a>
+            {% if 'blog' in request.path %}
+                <a href="{% url 'blog:blog_home' %}" class="nav-link active">Blog</a>
+            {% else %}
+                <a href="{% url 'blog:blog_home' %}" class="nav-link">Blog</a>
+            {% endif %}
           </li>
         </ul>
       </div>
